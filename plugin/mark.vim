@@ -34,7 +34,7 @@ if ! exists('g:mwHistAdd')
 endif
 
 if ! exists('g:mwAutoLoadMarks')
-	let g:mwAutoLoadMarks = 0
+	let g:mwAutoLoadMarks = 1
 endif
 
 if ! exists('g:mwAutoSaveMarks')
@@ -50,12 +50,15 @@ endif
 if ! exists('g:mwPalettes')
 	let g:mwPalettes = {
 	\	'original': [
+		\   { 'ctermbg':'Red',        'ctermfg':'Black', 'guibg':'#FF7272', 'guifg':'Black' },
+		\   { 'ctermbg':'Magenta',    'ctermfg':'Black', 'guibg':'#FFB3FF', 'guifg':'Black' },
 		\   { 'ctermbg':'Cyan',       'ctermfg':'Black', 'guibg':'#8CCBEA', 'guifg':'Black' },
 		\   { 'ctermbg':'Green',      'ctermfg':'Black', 'guibg':'#A4E57E', 'guifg':'Black' },
 		\   { 'ctermbg':'Yellow',     'ctermfg':'Black', 'guibg':'#FFDB72', 'guifg':'Black' },
-		\   { 'ctermbg':'Red',        'ctermfg':'Black', 'guibg':'#FF7272', 'guifg':'Black' },
-		\   { 'ctermbg':'Magenta',    'ctermfg':'Black', 'guibg':'#FFB3FF', 'guifg':'Black' },
 		\   { 'ctermbg':'Blue',       'ctermfg':'Black', 'guibg':'#9999FF', 'guifg':'Black' },
+		\   { 'ctermbg':'Gray',       'ctermfg':'Black'},
+		\   { 'ctermbg':'White',       'ctermfg':'Black'},
+		\   { 'ctermbg':'Brown',       'ctermfg':'Black'},
 		\],
 	\	'extended': function('mark#palettes#Extended'),
 	\	'maximum': function('mark#palettes#Maximum')
@@ -147,43 +150,47 @@ nnoremap <silent> <Plug>MarkSearchCascadePrevNoStop     :<C-u>if ! mark#cascade#
 
 
 if !hasmapto('<Plug>MarkSet', 'n')
-	nmap <unique> <Leader>m <Plug>MarkSet
+	nmap <unique> ! <Plug>MarkSet
 endif
 if !hasmapto('<Plug>MarkSet', 'x')
-	xmap <unique> <Leader>m <Plug>MarkSet
+	xmap <unique> ! <Plug>MarkSet
 endif
 " No default mapping for <Plug>MarkIWhiteSet.
 if !hasmapto('<Plug>MarkRegex', 'n')
-	nmap <unique> <Leader>r <Plug>MarkRegex
+	nmap / <Plug>MarkRegex
 endif
 if !hasmapto('<Plug>MarkRegex', 'x')
-	xmap <unique> <Leader>r <Plug>MarkRegex
+	xmap / <Plug>MarkRegex
 endif
-if !hasmapto('<Plug>MarkClear', 'n')
-	nmap <unique> <Leader>n <Plug>MarkClear
-endif
+"if !hasmapto('<Plug>MarkClear', 'n')
+"	nmap <unique> <Leader>n <Plug>MarkClear
+"endif
 " No default mapping for <Plug>MarkAllClear.
 " No default mapping for <Plug>MarkConfirmAllClear.
 " No default mapping for <Plug>MarkToggle.
 
 if !hasmapto('<Plug>MarkSearchCurrentNext', 'n')
-	nmap <unique> <Leader>* <Plug>MarkSearchCurrentNext
+	nmap n <Plug>MarkSearchCurrentNext
 endif
 if !hasmapto('<Plug>MarkSearchCurrentPrev', 'n')
-	nmap <unique> <Leader># <Plug>MarkSearchCurrentPrev
+	nmap N <Plug>MarkSearchCurrentPrev
 endif
-if !hasmapto('<Plug>MarkSearchAnyNext', 'n')
-	nmap <unique> <Leader>/ <Plug>MarkSearchAnyNext
-endif
-if !hasmapto('<Plug>MarkSearchAnyPrev', 'n')
-	nmap <unique> <Leader>? <Plug>MarkSearchAnyPrev
-endif
-if !hasmapto('<Plug>MarkSearchNext', 'n')
-	nmap <unique> * <Plug>MarkSearchNext
-endif
-if !hasmapto('<Plug>MarkSearchPrev', 'n')
-	nmap <unique> # <Plug>MarkSearchPrev
-endif
+
+nmap # <Plug>MarkSearchAnyNext
+nmap @ <Plug>MarkSearchAnyPrev
+
+"if !hasmapto('<Plug>MarkSearchAnyNext', 'n')
+"	nmap <unique> <Leader>/ <Plug>MarkSearchAnyNext
+"endif
+"if !hasmapto('<Plug>MarkSearchAnyPrev', 'n')
+"	nmap <unique> <Leader>? <Plug>MarkSearchAnyPrev
+"endif
+"if !hasmapto('<Plug>MarkSearchNext', 'n')
+"	nmap <unique> * <Plug>MarkSearchNext
+"endif
+"if !hasmapto('<Plug>MarkSearchPrev', 'n')
+"	nmap <unique> # <Plug>MarkSearchPrev
+"endif
 " No default mapping for <Plug>MarkSearchOrCurNext
 " No default mapping for <Plug>MarkSearchOrCurPrev
 " No default mapping for <Plug>MarkSearchOrAnyNext
