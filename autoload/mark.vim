@@ -71,7 +71,7 @@ function! mark#MarkCurrentWord( groupNum )
 			endif
 		endif
 	endif
-	return (empty(l:regexp) ? 0 : mark#DoMark(a:groupNum, l:regexp)[0])
+	return (empty(l:regexp) ? 0 : mark#DoMarkAndSetCurrent(a:groupNum, l:regexp)[0])
 endfunction
 
 function! mark#GetVisualSelection()
